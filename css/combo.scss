@@ -1,0 +1,202 @@
+$combo_minwidth: 200px;
+$combo_maxwidth: 300px;
+$el_minHeight: calc(1.4em + 26px);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+body {
+  background-color: #f5f5f5;
+  font-family: "Segoe UI", SegoeUI, "Helvetica Neue", Helvetica, Arial,
+  sans-serif;
+  font-size: 120%;
+  line-height: 1.4;
+  margin: 0;
+  padding: 2em;
+}
+
+.combo {
+  float:left;
+
+  display: block;
+  //margin-bottom: 1.5em;
+  max-width: $combo_maxwidth;
+  position: relative;
+  min-width: $combo_minwidth;
+  font: 13px Helmet,Freesans,sans-serif;
+  font-family: Helvetica, Arial, monospace;
+  color: #101010;
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.6em;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  height: 3.08em;
+  border-radius: 0;
+  background-color: #fff;
+  background-position: right .75em center;
+  cursor: pointer;
+  margin: 0 2.3576520234% 1em 0;
+  box-sizing: border-box;
+}
+
+.combo::after {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  border-right: 2px solid rgba(0, 0, 0, 0.5);
+  content: "";
+  display: block;
+  height: 12px;
+  pointer-events: none;
+  position: absolute;
+  right: 16px;
+  top: 1.3em;
+  transform: translate(0, -65%) rotate(45deg);
+  width: 12px;
+}
+
+.combo-input {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  border: 1px  #ccc solid;
+  font-family: Helvetica, Arial, monospace;
+  color: #333;
+  margin: 0;
+  background-color: #f5f5f5;
+  //border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  min-height: $el_minHeight;
+  padding: 12px 16px 14px;
+  text-align: left;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.open .combo-input {
+  //border-radius: 4px 4px 0 0;
+}
+
+.combo-input:focus {
+  border:none;
+  //box-shadow: 0 0 4px 2px #0067b8;
+  outline: 3px solid black;
+  outline-style: ridge;
+}
+
+.combo-label {
+  display: block;
+  font-size: 1em;
+  font-weight: 100;
+}
+
+
+.combo-menu {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.42);
+  border-radius: 0 0 4px 4px;
+  display: none;
+  max-height: calc(2.5em*10 + 4px);
+  overflow-y: scroll;
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 100;
+  margin-block-start: 0;
+  padding-inline-start: 0;
+}
+
+.open .combo-menu {
+  display: block;
+}
+.combo-menu > li:first-child {
+  display:none;
+}
+.combo-option {
+  height: 2.5em;
+  padding: .5em .2em .5em .75em;
+  color: black;
+  //padding: 10px 12px 12px;
+  list-style: none;
+}
+
+.combo-option.option-current,
+.combo-option:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  outline-offset: -3px;
+  outline: #222222 solid 3px;
+}
+
+.combo-option.option-selected {
+  padding-right: 30px;
+  position: relative;
+}
+
+.combo-option.option-selected::after {
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  content: "";
+  height: 16px;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translate(0, -50%) rotate(45deg);
+  width: 8px;
+}
+.combo-option.option-hidden {
+  display: none !important;
+}
+
+.combo-alert {
+  display: none;
+}
+.combo-alert.active {
+  margin-top: .5em;
+  display: block;
+  overflow-wrap: normal;
+  overflow-x: auto;
+  max-width: $combo_maxwidth;
+  min-width: $combo_minwidth;
+  min-height: $el_minHeight;
+  color:red;
+  padding-left: 1em;
+}
+.overlay {
+  position: fixed;
+  padding-top: 0.5em;
+  margin-left: 1em;
+  overflow-x: hidden;
+  cursor: inherit;
+  min-width: $combo_minwidth;
+  max-width: $combo_maxwidth;
+  pointer-events: none;
+  z-index: 2;
+}
+.overlay.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

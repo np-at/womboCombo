@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bba6051d-c4e9-446e-98d5-c9bb3c5576e6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gxvJA8FiGEs5zHqit6oywRDC1r" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/index.html" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="ts.external.directory.path" value="C:\Users\npraskins.cforat\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\202.6948.73\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="https://dummy.restapiexample.com/api/v1/employees" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://dummy.restapiexample.com/api/v1/employees" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Node.js/Chrome.launcht">
+    <configuration name="launcht" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="1234" restartOnDisconnect="true">
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$PROJECT_DIR$/package.json" />
+          <command value="run" />
+          <scripts>
+            <script value="start" />
+          </scripts>
+          <node-interpreter value="project" />
+          <node-options value="--inspect" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Node.js/Chrome.launcht" />
+      <item itemvalue="npm.start" />
+      <item itemvalue="HTTP Request.generated-requests#1" />
+      <item itemvalue="HTTP Request.generated-requests#2" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests#2" />
+        <item itemvalue="HTTP Request.generated-requests#1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bba6051d-c4e9-446e-98d5-c9bb3c5576e6" name="Default Changelist" comment="" />
+      <created>1599068983394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599068983394</updated>
+      <workItem from="1599068985593" duration="53408000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/js/utils.js" />
+        <option value="$PROJECT_DIR$/js/main.js" />
+        <option value="$PROJECT_DIR$/js/main.js.map" />
+        <option value="$PROJECT_DIR$/js/utils.d.ts" />
+        <option value="$PROJECT_DIR$/js/main.d.ts" />
+        <option value="$PROJECT_DIR$/js/main.d.ts.map" />
+        <option value="$PROJECT_DIR$/js/utils.js.map" />
+        <option value="$PROJECT_DIR$/js/utils.d.ts.map" />
+        <option value="$PROJECT_DIR$/js/combo.js.map" />
+        <option value="$PROJECT_DIR$/js/combo.d.ts.map" />
+        <option value="$PROJECT_DIR$/js/combo.js" />
+        <option value="$PROJECT_DIR$/js/combo.d.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="515" y="392" key="#Inspections" timestamp="1599093072016">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="515" y="392" key="#Inspections/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093072016" />
+    <state x="1257" y="402" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599178336244">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="224" y="88" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599069117238" />
+    <state x="1257" y="402" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599178336244" />
+    <state x="647" y="583" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1599190406896">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="647" y="583" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599190406896" />
+    <state x="949" y="477" width="662" height="679" key="EditFileWatcherDialog" timestamp="1599151568367">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="949" y="477" width="662" height="679" key="EditFileWatcherDialog/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599151568367" />
+    <state x="806" y="341" key="FileChooserDialogImpl" timestamp="1599093561189">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="806" y="341" key="FileChooserDialogImpl/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093561189" />
+    <state width="2539" height="399" key="GridCell.Tab.0.bottom" timestamp="1599195714269">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1899" height="399" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599169329817" />
+    <state width="2539" height="399" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599195714269" />
+    <state width="2539" height="399" key="GridCell.Tab.0.center" timestamp="1599195714269">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1899" height="399" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599169329816" />
+    <state width="2539" height="399" key="GridCell.Tab.0.center/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599195714269" />
+    <state width="2539" height="399" key="GridCell.Tab.0.left" timestamp="1599195714269">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1899" height="399" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599169329815" />
+    <state width="2539" height="399" key="GridCell.Tab.0.left/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599195714269" />
+    <state width="2539" height="399" key="GridCell.Tab.0.right" timestamp="1599195714269">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1899" height="399" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599169329817" />
+    <state width="2539" height="399" key="GridCell.Tab.0.right/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599195714269" />
+    <state width="1741" height="274" key="GridCell.Tab.1.bottom" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.1.center" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.1.center/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.1.left" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.1.left/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.1.right" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.1.right/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.2.bottom" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.2.bottom/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.2.center" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.2.center/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.2.left" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.2.left/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.2.right" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.2.right/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.3.bottom" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.3.bottom/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.3.center" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.3.center/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.3.left" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.3.left/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state width="1741" height="274" key="GridCell.Tab.3.right" timestamp="1599093704986">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1741" height="274" key="GridCell.Tab.3.right/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599093704986" />
+    <state x="781" y="344" key="SettingsEditor" timestamp="1599151569340">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="344" key="SettingsEditor/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599151569340" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1599160772757">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599160772757" />
+    <state x="1056" y="472" key="refactoring.ChangeSignatureDialog" timestamp="1599150155642">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1056" y="472" key="refactoring.ChangeSignatureDialog/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599150155642" />
+    <state x="936" y="330" key="run.anything.popup" timestamp="1599192004914">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" key="run.anything.popup/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599192004914" />
+    <state x="552" y="345" width="672" height="678" key="search.everywhere.popup" timestamp="1599177719390">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="552" y="345" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-1200.0.1200.1920@0.0.2560.1400" timestamp="1599177719390" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
