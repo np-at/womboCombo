@@ -1,0 +1,14 @@
+build
+dist
+doc
+img
+css
+
+.cache
+*.js
+.idea
+*.json
+*.d.ts
+site.webmanifest
+.*
+node_modules

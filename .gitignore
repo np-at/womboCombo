@@ -8,4 +8,4 @@ dist
 .idea
 **/*.map
 **/*.d.ts
-
+/.idea/
