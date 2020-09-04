@@ -4,3 +4,8 @@
 node_modules
 dist
 .cache
+.idea/vcs.xml
+.idea
+**/*.map
+**/*.d.ts
+
