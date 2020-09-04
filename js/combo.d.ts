@@ -1,15 +1,3 @@
-interface comboOption {
-    index: number;
-    filtered: boolean;
-    displayValue: string;
-    value?: number;
-}
-interface callbackFunc {
-    (input: string): string | void;
-}
-interface dataFunction {
-    (input?: any): Promise<comboOption[] | undefined>;
-}
 export declare class Combobox {
     inputEl: HTMLInputElement;
     listboxEl: HTMLElement;
@@ -24,10 +12,10 @@ export declare class Combobox {
     callback?: callbackFunc;
     private readonly _getDataFunction;
     private eventHandlersSet;
+    private alertActive;
     constructor(el: HTMLElement, callback?: callbackFunc, getDataFunction?: dataFunction);
-    fetchDataFromSampleAPIAsync(filterString?: string): Promise<comboOption[] | undefined>;
-    refreshDataAsync(getDataArgs?: any): Promise<void>;
-    init(): Promise<void>;
+    refreshDataAsync(...getDataArgs: undefined[]): void;
+    init(): void;
     onInput(): void;
     updateFilteredOptions(): void;
     onInputKeyUp(event: KeyboardEvent, clearFilter?: boolean): void;
@@ -35,12 +23,25 @@ export declare class Combobox {
     onInputKeyDown(event: KeyboardEvent): void;
     onInputBlur(): void;
     onOptionChange(index: number): void;
-    onOptionClick(index: any): void;
+    onOptionClick(index: number): void;
     onOptionMouseDown(): void;
     selectOption(index: number): void;
-    updateMenuState(open: any, callFocus?: boolean): void;
+    updateMenuState(open: boolean, callFocus?: boolean): void;
     getUpdatedIndex(current: number, max: number, action: number): number;
     toggleAlert(active: boolean, message?: string): void;
+}
+export interface comboOption {
+    index: number;
+    filtered: boolean;
+    displayValue: string;
+    value?: number;
+    active?: boolean;
+}
+interface callbackFunc {
+    (input: string): string | void;
+}
+interface dataFunction {
+    (input?: never): Promise<comboOption[] | undefined>;
 }
 export {};
 //# sourceMappingURL=combo.d.ts.map

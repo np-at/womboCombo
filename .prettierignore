@@ -1,4 +1,3 @@
-build
 dist
 doc
 img
@@ -6,9 +5,9 @@ css
 
 .cache
 *.js
+*.map
 .idea
 *.json
 *.d.ts
 site.webmanifest
-.*
 node_modules

@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,16 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Combobox = void 0;
-// const exampleOptions = [ 'Apple', 'Banana', 'Blueberry', 'Boysenberry', 'Cherry', 'Durian', 'Eggplant', 'Fig', 'Grape', 'Guava', 'Huckleberry'];
 // helpers
 var Keys = {
     Backspace: 'Backspace',
@@ -60,7 +52,7 @@ var Keys = {
     Right: 'ArrowRight',
     Space: ' ',
     Tab: 'Tab',
-    Up: 'ArrowUp'
+    Up: 'ArrowUp',
 };
 var MenuActions = {
     Close: 0,
@@ -72,95 +64,21 @@ var MenuActions = {
     Previous: 6,
     Select: 7,
     Space: 8,
-    Type: 9
+    Type: 9,
 };
-// filter an array of options against an input string
-// returns an array of options that begin with the filter string, case-independent
-function filterOptions(options, filter, exclude) {
-    if (options === void 0) { options = []; }
-    if (exclude === void 0) { exclude = []; }
-    return options.filter(function (option) {
-        var matches = option.toLowerCase().indexOf(filter.toLowerCase()) === 0;
-        return matches && exclude.indexOf(option) < 0;
-    });
-}
-// return combobox action from key press
-function getActionFromKey(event, menuOpen) {
-    var key = event.key, altKey = event.altKey, ctrlKey = event.ctrlKey, metaKey = event.metaKey;
-    // handle opening when closed
-    if (!menuOpen && (key === Keys.Down || key === Keys.Enter || key === Keys.Space)) {
-        return MenuActions.Open;
-    }
-    // handle keys when open
-    if (key === Keys.Down) {
-        return MenuActions.Next;
-    }
-    else if (key === Keys.Up) {
-        return MenuActions.Previous;
-    }
-    else if (key === Keys.Home) {
-        return MenuActions.First;
-    }
-    else if (key === Keys.End) {
-        return MenuActions.Last;
-    }
-    else if (key === Keys.Escape) {
-        return MenuActions.Close;
-    }
-    else if (key === Keys.Enter) {
-        return MenuActions.CloseSelect;
-    }
-    else if (key === Keys.Space) {
-        return MenuActions.Space;
-    }
-    else if (key === Keys.Backspace || key === Keys.Clear || (key.length === 1 && !altKey && !ctrlKey && !metaKey)) {
-        return MenuActions.Type;
-    }
-}
-function toPromise(f) {
-    var origFuncArgs = f.arguments;
-    return function () {
-        return new Promise(function (resolve, reject) {
-            var result = f.apply(null, Array.from(origFuncArgs));
-            try {
-                return result.then(resolve, reject); // promise.
-            }
-            catch (e) {
-                if (e instanceof TypeError) {
-                    resolve(result); // resolve naked value.
-                }
-                else {
-                    reject(e); // pass unhandled exception to caller.
-                }
-            }
-        });
-    };
-}
-// check if an element is currently scrollable
-function isScrollable(element) {
-    return element && element.clientHeight < element.scrollHeight;
-}
-// ensure given child element is within the parent's visible scroll area
-function maintainScrollVisibility(activeElement, scrollParent) {
-    var offsetHeight = activeElement.offsetHeight, offsetTop = activeElement.offsetTop;
-    var parentOffsetHeight = scrollParent.offsetHeight, scrollTop = scrollParent.scrollTop;
-    var isAbove = offsetTop < scrollTop;
-    var isBelow = (offsetTop + offsetHeight) > (scrollTop + parentOffsetHeight);
-    if (isAbove) {
-        scrollParent.scrollTo(0, offsetTop);
-    }
-    else if (isBelow) {
-        scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
-    }
-}
 var Combobox = /** @class */ (function () {
     function Combobox(el, callback, getDataFunction) {
         var _a;
         this.ignoreBlur = false;
         this.eventHandlersSet = false;
+        this.alertActive = false;
         this.el = el;
-        this._getDataFunction = (getDataFunction == undefined) ? this.fetchDataFromSampleAPIAsync : getDataFunction;
-        this.inputEl = el.querySelector('input');
+        this._getDataFunction = getDataFunction == undefined ? fetchDataFromSampleAPIAsync : getDataFunction;
+        var inputElement = el.querySelector('input');
+        if (!inputElement)
+            throw new Error('Unable to find related input element for combobox');
+        else
+            this.inputEl = inputElement;
         this.listboxEl = el.querySelector('[role=listbox]');
         this.alertEl = el.querySelector('[role=alert]');
         this.callback = callback;
@@ -170,114 +88,58 @@ var Combobox = /** @class */ (function () {
         this.activeIndex = 0;
         this.open = false;
     }
-    // sample api used if no alternative provided in constructor
-    Combobox.prototype.fetchDataFromSampleAPIAsync = function (filterString) {
-        var _a;
-        return __awaiter(this, void 0, void 0, function () {
-            var r, retryAfter, he, jsonResponse, optionsLise, resp;
-            var _this = this;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, fetch('https://dummy.restapiexample.com/api/v1/employees', { mode: "cors" })];
-                    case 1:
-                        r = _b.sent();
-                        r.headers.forEach(function (value, name) {
-                            console.log(name + ": " + value);
-                        });
-                        if (!(r.status == 429)) return [3 /*break*/, 3];
-                        retryAfter = (_a = r.headers.get('retry-after')) !== null && _a !== void 0 ? _a : 5;
-                        console.log("backing off, waiting for " + retryAfter + " seconds; headers are " + r.headers);
-                        return [4 /*yield*/, r.trailer];
-                    case 2:
-                        he = _b.sent();
-                        console.debug(he);
-                        setTimeout(function () { return __awaiter(_this, void 0, void 0, function () { return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.fetchDataFromSampleAPIAsync()];
-                                case 1: return [2 /*return*/, _a.sent()];
-                            }
-                        }); }); }, retryAfter * 1000);
-                        return [2 /*return*/];
-                    case 3: return [4 /*yield*/, r.json()];
-                    case 4:
-                        jsonResponse = _b.sent(), optionsLise = [{ display: '', value: undefined }];
-                        resp = jsonResponse.data.map(function (x) { return { display: x['employee_name'], value: x['id'] }; });
-                        console.debug(resp);
-                        optionsLise = optionsLise.concat(resp);
-                        return [2 /*return*/, optionsLise.map(function (x, i) {
-                                return { index: i, filtered: false, displayValue: x.display, value: x.value };
-                            })];
+    Combobox.prototype.refreshDataAsync = function () {
+        var _this = this;
+        var getDataArgs = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            getDataArgs[_i] = arguments[_i];
+        }
+        console.debug('refreshing data');
+        try {
+            this._getDataFunction.apply(this, getDataArgs).then(function (x) {
+                var _a, _b, _c;
+                _this.optionsStatus = [{ index: 0, displayValue: '', filtered: false }];
+                // if data is undefined, propagate that information
+                _this.optionsStatus = x ? _this.optionsStatus.concat(x) : undefined;
+                (_a = _this.optionsStatus) === null || _a === void 0 ? void 0 : _a.map(function (option, index) {
+                    var _a;
+                    var optionEl = document.createElement('li');
+                    optionEl.setAttribute('role', 'option');
+                    optionEl.id = _this.idBase + "-" + index;
+                    optionEl.className = index === 0 ? 'combo-option option-current' : 'combo-option';
+                    optionEl.setAttribute('aria-selected', "" + (index === 0));
+                    optionEl.innerText = option.displayValue;
+                    if (option.value != null) {
+                        optionEl.value = (_a = option.value) !== null && _a !== void 0 ? _a : 0;
+                    }
+                    optionEl.addEventListener('click', function () {
+                        _this.onOptionClick(index);
+                    });
+                    optionEl.addEventListener('mousedown', _this.onOptionMouseDown.bind(_this));
+                    _this.listboxEl.appendChild(optionEl);
+                });
+                if (!_this.eventHandlersSet) {
+                    _this.inputEl.addEventListener('input', _this.onInput.bind(_this));
+                    _this.inputEl.addEventListener('blur', _this.onInputBlur.bind(_this));
+                    _this.inputEl.addEventListener('click', function () { return _this.updateMenuState(true); });
+                    _this.inputEl.addEventListener('keydown', _this.onInputKeyDown.bind(_this));
+                    _this.inputEl.addEventListener('keyup', _this.onInputKeyUp.bind(_this));
+                    _this.eventHandlersSet = true;
                 }
-            });
-        });
-    };
-    Combobox.prototype.refreshDataAsync = function (getDataArgs) {
-        var _a, _b;
-        return __awaiter(this, void 0, void 0, function () {
-            var _c, e_1;
-            var _this = this;
-            return __generator(this, function (_d) {
-                switch (_d.label) {
-                    case 0:
-                        console.log('refreshing data');
-                        _d.label = 1;
-                    case 1:
-                        _d.trys.push([1, 3, , 4]);
-                        _c = this;
-                        return [4 /*yield*/, this._getDataFunction.apply(this, getDataArgs)];
-                    case 2:
-                        _c.optionsStatus = _d.sent();
-                        return [3 /*break*/, 4];
-                    case 3:
-                        e_1 = _d.sent();
-                        console.error(e_1);
-                        return [3 /*break*/, 4];
-                    case 4:
-                        if (this.optionsStatus) {
-                            this.inputEl.value = "" + ((_a = this.optionsStatus[0].value) !== null && _a !== void 0 ? _a : '');
-                        }
-                        (_b = this.optionsStatus) === null || _b === void 0 ? void 0 : _b.map(function (option, index) {
-                            var optionEl = document.createElement('li');
-                            optionEl.setAttribute('role', 'option');
-                            optionEl.id = _this.idBase + "-" + index;
-                            optionEl.className = index === 0 ? 'combo-option option-current' : 'combo-option';
-                            optionEl.setAttribute('aria-selected', "" + (index === 0));
-                            optionEl.innerText = option.displayValue;
-                            if (option.value != null) {
-                                optionEl.value = option.value;
-                            }
-                            optionEl.addEventListener('click', function () {
-                                _this.onOptionClick(index);
-                            });
-                            optionEl.addEventListener('mousedown', _this.onOptionMouseDown.bind(_this));
-                            _this.listboxEl.appendChild(optionEl);
-                        });
-                        if (!this.eventHandlersSet) {
-                            this.inputEl.addEventListener('input', this.onInput.bind(this));
-                            this.inputEl.addEventListener('blur', this.onInputBlur.bind(this));
-                            this.inputEl.addEventListener('click', function () { return _this.updateMenuState(true); });
-                            this.inputEl.addEventListener('keydown', this.onInputKeyDown.bind(this));
-                            this.inputEl.addEventListener('keyup', this.onInputKeyUp.bind(this));
-                            this.eventHandlersSet = true;
-                        }
-                        return [2 /*return*/];
+                if (_this.optionsStatus) {
+                    _this.inputEl.value = "" + ((_c = (_b = _this.optionsStatus) === null || _b === void 0 ? void 0 : _b[0].displayValue) !== null && _c !== void 0 ? _c : '');
                 }
+            })
+                .catch(function (x) {
+                throw x;
             });
-        });
+        }
+        catch (e) {
+            console.error(e);
+        }
     };
     Combobox.prototype.init = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        console.log('initializing');
-                        return [4 /*yield*/, this.refreshDataAsync()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
+        this.refreshDataAsync();
     };
     Combobox.prototype.onInput = function () {
         var _this = this;
@@ -290,20 +152,17 @@ var Combobox = /** @class */ (function () {
         if (matches.length > 0 && !filterCurrentOption.length && this.optionsStatus) {
             this.onOptionChange(this.optionsStatus.map(function (x) { return x.displayValue; }).indexOf(matches[0]));
         }
-        var menuState = (_c = (_b = this.optionsStatus) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0 > 0;
+        var menuState = ((_c = (_b = this.optionsStatus) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0) > 0;
         if (this.open !== menuState) {
             this.updateMenuState(menuState, false);
         }
     };
     Combobox.prototype.updateFilteredOptions = function () {
-        var opElements = this.el.querySelectorAll('[role=option]');
-        if (this.optionsStatus) {
-            for (var _i = 0, _a = this.optionsStatus; _i < _a.length; _i++) {
-                var i = _a[_i];
-                var el = opElements[i.index];
-                el.classList.toggle('option-hidden', i.filtered);
-            }
-        }
+        var _this = this;
+        var _a;
+        (_a = this.optionsStatus) === null || _a === void 0 ? void 0 : _a.forEach(function (v) {
+            _this.listboxEl.children[v.index].classList.toggle('option-hidden', v.filtered);
+        });
     };
     Combobox.prototype.onInputKeyUp = function (event, clearFilter) {
         var _this = this;
@@ -323,7 +182,9 @@ var Combobox = /** @class */ (function () {
         var filter = filterString ? filterString : this.inputEl.value;
         (_a = this.optionsStatus) === null || _a === void 0 ? void 0 : _a.forEach(function (t) {
             var _a;
-            t.filtered = clearFilter ? false : !(((_a = t.displayValue.toLowerCase().indexOf(filter.toLowerCase())) !== null && _a !== void 0 ? _a : -1) >= 0);
+            t.filtered = clearFilter
+                ? false
+                : !(((_a = t.displayValue.toLowerCase().indexOf(filter.toLowerCase())) !== null && _a !== void 0 ? _a : -1) >= 0);
         });
         this.updateFilteredOptions();
         if (((_c = (_b = this.optionsStatus) === null || _b === void 0 ? void 0 : _b.filter(function (x) { return !x.filtered; }).length) !== null && _c !== void 0 ? _c : 1) < 1) {
@@ -374,18 +235,13 @@ var Combobox = /** @class */ (function () {
         }
     };
     Combobox.prototype.onOptionChange = function (index) {
-        this.activeIndex = index;
         this.inputEl.setAttribute('aria-activedescendant', this.idBase + "-" + index);
         // update active style
-        var options = this.el.querySelectorAll('[role=option]');
-        // @ts-ignore
-        for (var _i = 0, _a = __spreadArrays(options); _i < _a.length; _i++) {
-            var optionEl = _a[_i];
-            optionEl.classList.remove('option-current');
-        }
-        options[index].classList.add('option-current');
+        this.listboxEl.children[this.activeIndex].classList.remove('option-current');
+        this.listboxEl.children[index].classList.add('option-current');
+        this.activeIndex = index;
         if (this.open && isScrollable(this.listboxEl)) {
-            maintainScrollVisibility(options[index], this.listboxEl);
+            maintainScrollVisibility(this.listboxEl.children[index], this.listboxEl);
         }
     };
     Combobox.prototype.onOptionClick = function (index) {
@@ -399,15 +255,11 @@ var Combobox = /** @class */ (function () {
     Combobox.prototype.selectOption = function (index) {
         var _a, _b, _c, _d, _e, _f, _g;
         this.inputEl.value = (_b = (_a = this.optionsStatus) === null || _a === void 0 ? void 0 : _a[index].displayValue) !== null && _b !== void 0 ? _b : '';
-        this.activeIndex = index;
         // update aria-selected
-        var options = this.el.querySelectorAll('[role=option]');
-        // @ts-ignore
-        __spreadArrays(options).forEach(function (optionEl) {
-            optionEl.setAttribute('aria-selected', 'false');
-        });
-        options[index].setAttribute('aria-selected', 'true');
-        (_c = this.callback) === null || _c === void 0 ? void 0 : _c.call(this, (_g = (_e = (_d = options[index]) === null || _d === void 0 ? void 0 : _d.getAttribute('value')) !== null && _e !== void 0 ? _e : (_f = options[index]) === null || _f === void 0 ? void 0 : _f.textContent) !== null && _g !== void 0 ? _g : '');
+        this.listboxEl.children[this.activeIndex].setAttribute('aria-selected', 'false');
+        this.listboxEl.children[index].setAttribute('aria-selected', 'true');
+        this.activeIndex = index;
+        (_c = this.callback) === null || _c === void 0 ? void 0 : _c.call(this, (_g = (_e = (_d = this.listboxEl.children[index]) === null || _d === void 0 ? void 0 : _d.getAttribute('value')) !== null && _e !== void 0 ? _e : (_f = this.listboxEl.children[index]) === null || _f === void 0 ? void 0 : _f.textContent) !== null && _g !== void 0 ? _g : '');
     };
     Combobox.prototype.updateMenuState = function (open, callFocus) {
         var _a;
@@ -415,8 +267,11 @@ var Combobox = /** @class */ (function () {
         this.open = open;
         this.inputEl.setAttribute('aria-expanded', "" + open);
         open ? this.el.classList.add('open') : this.el.classList.remove('open');
+        if (this.inputEl.value) {
+            this.toggleAlert(false);
+        }
         if ((_a = this.inputEl) === null || _a === void 0 ? void 0 : _a.labels) {
-            this.inputEl.labels[0].classList.toggle('sr-only', (this.activeIndex != 0 || this.inputEl.value != ''));
+            this.inputEl.labels[0].classList.toggle('sr-only', this.activeIndex != 0 || this.inputEl.value != '');
         }
         callFocus && this.inputEl.focus();
     };
@@ -448,11 +303,135 @@ var Combobox = /** @class */ (function () {
         }
     };
     Combobox.prototype.toggleAlert = function (active, message) {
+        // if requested state is the same as current, skip the work
+        if (this.alertActive == active)
+            return;
         if (active)
-            this.alertEl.textContent = message !== null && message !== void 0 ? message : "No results found";
+            this.alertEl.textContent = message !== null && message !== void 0 ? message : 'No results found';
         this.alertEl.classList.toggle('active', active);
+        this.alertActive = active;
     };
     return Combobox;
 }());
 exports.Combobox = Combobox;
+// filter an array of options against an input string
+// returns an array of options that begin with the filter string, case-independent
+function filterOptions(options, filter, exclude) {
+    if (options === void 0) { options = []; }
+    if (exclude === void 0) { exclude = []; }
+    return options.filter(function (option) {
+        var matches = option.toLowerCase().indexOf(filter.toLowerCase()) === 0;
+        return matches && exclude.indexOf(option) < 0;
+    });
+}
+// return combobox action from key press
+function getActionFromKey(event, menuOpen) {
+    var key = event.key, altKey = event.altKey, ctrlKey = event.ctrlKey, metaKey = event.metaKey;
+    // handle opening when closed
+    if (!menuOpen && (key === Keys.Down || key === Keys.Enter || key === Keys.Space)) {
+        return MenuActions.Open;
+    }
+    // handle keys when open
+    if (key === Keys.Down) {
+        return MenuActions.Next;
+    }
+    else if (key === Keys.Up) {
+        return MenuActions.Previous;
+    }
+    else if (key === Keys.Home) {
+        return MenuActions.First;
+    }
+    else if (key === Keys.End) {
+        return MenuActions.Last;
+    }
+    else if (key === Keys.Escape) {
+        return MenuActions.Close;
+    }
+    else if (key === Keys.Enter) {
+        return MenuActions.CloseSelect;
+    }
+    else if (key === Keys.Space) {
+        return MenuActions.Space;
+    }
+    else if (key === Keys.Backspace || key === Keys.Clear || (key.length === 1 && !altKey && !ctrlKey && !metaKey)) {
+        return MenuActions.Type;
+    }
+}
+function toPromise(f) {
+    return function () {
+        return new Promise(function (resolve, reject) {
+            var result = f.apply(f.arguments);
+            try {
+                return result.then(resolve, reject); // promise.
+            }
+            catch (e) {
+                if (e instanceof TypeError) {
+                    resolve(result); // resolve naked value.
+                }
+                else {
+                    reject(e); // pass unhandled exception to caller.
+                }
+            }
+        });
+    };
+}
+// check if an element is currently scrollable
+function isScrollable(element) {
+    return element && element.clientHeight < element.scrollHeight;
+}
+// ensure given child element is within the parent's visible scroll area
+function maintainScrollVisibility(activeElement, scrollParent) {
+    var offsetHeight = activeElement.offsetHeight, offsetTop = activeElement.offsetTop;
+    var parentOffsetHeight = scrollParent.offsetHeight, scrollTop = scrollParent.scrollTop;
+    var isAbove = offsetTop < scrollTop;
+    var isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
+    if (isAbove) {
+        scrollParent.scrollTo(0, offsetTop);
+    }
+    else if (isBelow) {
+        scrollParent.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight);
+    }
+}
+// sample api used if no alternative provided in constructor
+function fetchDataFromSampleAPIAsync(filterString) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function () {
+        var r, retryAfter, he, jsonResponse, optionsLise, resp;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, fetch('https://dummy.restapiexample.com/api/v1/employees', { mode: 'cors' })];
+                case 1:
+                    r = _b.sent();
+                    r.headers.forEach(function (value, name) {
+                        console.log(name + ': ' + value);
+                    });
+                    if (!(r.status == 429)) return [3 /*break*/, 5];
+                    retryAfter = (_a = r.headers.get('retry-after')) !== null && _a !== void 0 ? _a : 5;
+                    console.debug("backing off, waiting for " + retryAfter + " seconds; headers are " + r.headers);
+                    return [4 /*yield*/, r.trailer];
+                case 2:
+                    he = _b.sent();
+                    console.debug(he);
+                    return [4 /*yield*/, delay(retryAfter * 1000)];
+                case 3:
+                    _b.sent();
+                    return [4 /*yield*/, fetchDataFromSampleAPIAsync(filterString)];
+                case 4: return [2 /*return*/, _b.sent()];
+                case 5: return [4 /*yield*/, r.json()];
+                case 6:
+                    jsonResponse = _b.sent(), optionsLise = [{ display: '', value: undefined }];
+                    resp = jsonResponse.data.map(function (x) {
+                        return { display: x['employee_name'], value: x['id'] };
+                    });
+                    return [2 /*return*/, optionsLise.concat(resp).map(function (x, i) {
+                            return { index: i, filtered: false, displayValue: x.display, value: x.value };
+                        })];
+            }
+        });
+    });
+}
+// sleep function
+function delay(ms) {
+    return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+}
 //# sourceMappingURL=combo.js.map

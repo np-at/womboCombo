@@ -10,7 +10,7 @@
     'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
   ];
   let length = methods.length;
-  const console = (window.console = window.console || {});
+  const console: any = (window.console = window.console || {});
 
   while (length--) {
     method = methods[length];
