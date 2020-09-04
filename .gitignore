@@ -9,3 +9,5 @@ dist
 **/*.map
 **/*.d.ts
 /.idea/
+js/*.js
+css/*.css
